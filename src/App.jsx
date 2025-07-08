@@ -38,7 +38,7 @@ function App() {
     gsap.set(".main", { scale: 1.7, rotate: -10 });
     gsap.set(".sky", { scale: 1.5, rotate: -20 });
     gsap.set(".bg", { scale: 1.8, rotate: -3 });
-    gsap.set(".character", { scale: 3, rotate: -20, bottom: "-150%", left: "50%", x: "-50%" });
+    gsap.set(".character", { scale: 2, rotate: -20, bottom: "-80%", left: "50%", x: "-50%" });
     gsap.set(".text", { scale: 1.4, rotate: -10 });
 
     gsap.to(".main", {
@@ -66,9 +66,9 @@ function App() {
     });
 
     gsap.to(".character", {
-      scale: 1.8,
+      scale: 1.2,
       x: "-50%",
-      bottom: "-20%",
+      bottom: "-10%",
       rotate: 0,
       duration: 2,
       delay: 0.4,
@@ -219,41 +219,41 @@ function App() {
             </div>
           </div>
           
-          <div className="w-full min-h-screen flex items-center justify-center bg-black py-16 px-8">
-            <div className="cntnr flex flex-col lg:flex-row text-white w-full max-w-7xl gap-12 lg:gap-16">
-              <div className="limg relative w-full lg:w-1/2 h-[400px] lg:h-[600px] flex items-center justify-center">
+          <div className="w-full min-h-screen bg-black py-16 px-8">
+            <div className="cntnr flex flex-col lg:flex-row text-white w-full max-w-7xl mx-auto gap-12 lg:gap-16 items-center">
+              <div className="limg relative w-full lg:w-1/2 h-[500px] lg:h-[700px] flex items-end justify-center">
                 <img
-                  className="w-full h-full object-contain max-w-[500px] drop-shadow-2xl"
+                  className="h-full object-contain max-w-[400px] lg:max-w-[500px] drop-shadow-2xl"
                   src="./imag.png"
                   alt=""
                 />
               </div>
-              <div className="rg w-full lg:w-1/2 flex flex-col justify-center space-y-8">
+              <div className="rg w-full lg:w-1/2 flex flex-col justify-center space-y-6 lg:space-y-8">
                 <div className="space-y-4">
-                  <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight gradient-text font-black">
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight gradient-text font-black">
                     Still Running,
                   </h1>
-                  <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight gradient-text font-black">
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight gradient-text font-black">
                     Not Hunting
                   </h1>
                 </div>
                 
                 <div className="space-y-6 text-gray-300">
-                  <p className="text-lg md:text-xl leading-relaxed" style={{ fontFamily: 'Helvetica Now Display, sans-serif' }}>
+                  <p className="text-base md:text-lg lg:text-xl leading-relaxed" style={{ fontFamily: 'Helvetica Now Display, sans-serif' }}>
                     Experience the ultimate open-world adventure in Vice City. Navigate through neon-lit streets, 
                     build your criminal empire, and live the life of luxury and danger in this reimagined classic.
                   </p>
-                  <p className="text-lg md:text-xl leading-relaxed" style={{ fontFamily: 'Helvetica Now Display, sans-serif' }}>
+                  <p className="text-base md:text-lg lg:text-xl leading-relaxed" style={{ fontFamily: 'Helvetica Now Display, sans-serif' }}>
                     With enhanced graphics, immersive gameplay, and endless possibilities, Grand Theft Auto VI 
                     pushes the boundaries of what's possible in gaming. Every choice matters, every action has consequences.
                   </p>
-                  <p className="text-base md:text-lg leading-relaxed text-gray-400" style={{ fontFamily: 'Helvetica Now Display, sans-serif' }}>
+                  <p className="text-sm md:text-base lg:text-lg leading-relaxed text-gray-400" style={{ fontFamily: 'Helvetica Now Display, sans-serif' }}>
                     Available exclusively on PlayStation 5. Pre-order now and get exclusive in-game content, 
                     including bonus vehicles, weapons, and access to premium locations.
                   </p>
                 </div>
                 
-                <button className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 px-8 py-4 md:px-12 md:py-6 text-black text-2xl md:text-3xl font-bold rounded-lg shadow-2xl transform hover:scale-105 transition-all duration-300 w-fit">
+                <button className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 px-6 py-3 md:px-8 md:py-4 lg:px-10 lg:py-5 text-black text-lg md:text-xl lg:text-2xl font-bold rounded-lg shadow-2xl transform hover:scale-105 transition-all duration-300 w-fit">
                   <span className="flex items-center gap-3">
                     Download Now
                     <i className="ri-download-line"></i>
