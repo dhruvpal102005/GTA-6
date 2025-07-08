@@ -38,7 +38,7 @@ function App() {
     gsap.set(".main", { scale: 1.7, rotate: -10 });
     gsap.set(".sky", { scale: 1.5, rotate: -20 });
     gsap.set(".bg", { scale: 1.8, rotate: -3 });
-    gsap.set(".character", { scale: 2, rotate: -20, bottom: "-80%", left: "50%", x: "-50%" });
+    gsap.set(".character", { scale: 2, rotate: -20, bottom: "-120%", left: "50%", x: "-50%" });
     gsap.set(".text", { scale: 1.4, rotate: -10 });
 
     gsap.to(".main", {
@@ -68,7 +68,7 @@ function App() {
     gsap.to(".character", {
       scale: 1.2,
       x: "-50%",
-      bottom: "-10%",
+      bottom: "-40%",
       rotate: 0,
       duration: 2,
       delay: 0.4,
@@ -112,6 +112,12 @@ function App() {
         x: xMove * 0.8,
         y: yMove * 0.3,
         duration: 1,
+        ease: "Power2.easeOut"
+      });
+      gsap.to(".city", {
+        x: xMove * 1.2,
+        y: yMove * 0.4,
+        duration: 0.8,
         ease: "Power2.easeOut"
       });
       gsap.to(".bg", {
@@ -183,11 +189,16 @@ function App() {
                 alt=""
               />
               <img
-                className="absolute bg top-0 left-0 w-full h-full object-cover"
+                className="absolute city top-0 left-0 w-full h-full object-cover"
                 src="./bg.png"
                 alt=""
               />
-              <div className="text text-white flex flex-col gap-2 absolute top-16 md:top-20 left-1/2 -translate-x-1/2 text-center">
+              <img
+                className="absolute bg top-0 left-0 w-full h-full object-cover"
+                src="./sky.png"
+                alt=""
+              />
+              <div className="text text-white flex flex-col gap-2 absolute top-8 md:top-12 left-1/2 -translate-x-1/2 text-center z-10">
                 <h1 className="text-[8rem] md:text-[12rem] lg:text-[14rem] leading-none text-shadow gradient-text font-black tracking-tighter">
                   grand
                 </h1>
@@ -199,7 +210,7 @@ function App() {
                 </h1>
               </div>
               <img
-                className="absolute character left-1/2 -translate-x-1/2"
+                className="absolute character left-1/2 -translate-x-1/2 z-20"
                 src="./girlbg.png"
                 alt=""
               />
