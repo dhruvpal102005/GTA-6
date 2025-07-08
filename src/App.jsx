@@ -99,24 +99,31 @@ function App() {
     const main = document.querySelector(".main");
 
     main?.addEventListener("mousemove", function (e) {
-      const xMove = (e.clientX / window.innerWidth - 0.5) * 30;
-      const yMove = (e.clientY / window.innerHeight - 0.5) * 20;
+      const xMove = (e.clientX / window.innerWidth - 0.5) * 80;
+      const yMove = (e.clientY / window.innerHeight - 0.5) * 60;
       
       gsap.to(".sky", {
-        x: xMove * 0.8,
-        y: yMove * 0.3,
-        duration: 1,
+        x: xMove * 1.5,
+        y: yMove * 0.8,
+        duration: 0.8,
         ease: "Power2.easeOut"
       });
       gsap.to(".bg", {
-        x: xMove * 1.5,
-        y: yMove * 0.5,
-        duration: 0.6,
+        x: xMove * 2.5,
+        y: yMove * 1.2,
+        duration: 0.5,
         ease: "Power2.easeOut"
       });
       gsap.to(".character", {
-        x: `${-50 + xMove * 0.2}%`,
-        duration: 1.2,
+        x: `${-50 + xMove * 0.6}%`,
+        y: yMove * 0.4,
+        duration: 0.7,
+        ease: "Power2.easeOut"
+      });
+      gsap.to(".text", {
+        x: xMove * 0.3,
+        y: yMove * 0.2,
+        duration: 1,
         ease: "Power2.easeOut"
       });
     });
