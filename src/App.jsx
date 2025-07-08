@@ -38,7 +38,6 @@ function App() {
     gsap.set(".main", { scale: 1.7, rotate: -10 });
     gsap.set(".sky", { scale: 1.5, rotate: -20 });
     gsap.set(".city", { scale: 1.6, rotate: -15 });
-    gsap.set(".bg", { scale: 1.8, rotate: -3 });
     gsap.set(".character", { scale: 2, rotate: -20, bottom: "-120%", left: "50%", x: "-50%" });
     gsap.set(".text", { scale: 1.4, rotate: -10 });
 
@@ -63,13 +62,6 @@ function App() {
       rotate: 0,
       duration: 2,
       delay: 0.25,
-      ease: "Expo.easeInOut",
-    });
-    gsap.to(".bg", {
-      scale: 1.3,
-      rotate: 0,
-      duration: 2,
-      delay: 0.2,
       ease: "Expo.easeInOut",
     });
 
@@ -126,12 +118,6 @@ function App() {
         x: xMove * 1.2,
         y: yMove * 0.4,
         duration: 0.8,
-        ease: "Power2.easeOut"
-      });
-      gsap.to(".bg", {
-        x: xMove * 1.5,
-        y: yMove * 0.5,
-        duration: 0.6,
         ease: "Power2.easeOut"
       });
       gsap.to(".character", {
@@ -199,11 +185,6 @@ function App() {
               <img
                 className="absolute city top-0 left-0 w-full h-full object-cover opacity-90"
                 src="./20250505_1316_Futuristic Fashion Pose_remix_01jtfpfprqen293p9pr685wnqw.png"
-                alt=""
-              />
-              <img
-                className="absolute bg top-0 left-0 w-full h-full object-cover"
-                src="./bg.png"
                 alt=""
               />
               <div className="text text-white flex flex-col gap-2 absolute top-8 md:top-12 left-1/2 -translate-x-1/2 text-center z-10">
