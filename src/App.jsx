@@ -39,6 +39,7 @@ function App() {
     gsap.set(".sky", { scale: 1.5, rotate: -20 });
     gsap.set(".bg", { scale: 1.8, rotate: -3 });
     gsap.set(".character", { scale: 1.5, rotate: -20, bottom: "-150%", left: "50%", x: "-50%" });
+    gsap.set(".character", { scale: 1.5, rotate: -20, bottom: "-180%", left: "50%", x: "-50%" });
     gsap.set(".text", { scale: 1.4, rotate: -10 });
 
     gsap.to(".main", {
@@ -68,7 +69,7 @@ function App() {
     gsap.to(".character", {
       scale: 0.8,
       x: "-50%",
-      bottom: "-60%",
+      bottom: "-80%",
       rotate: 0,
       duration: 2,
       delay: 0.4,
