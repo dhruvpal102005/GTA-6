@@ -206,7 +206,7 @@ function App() {
                 </h3>
               </div>
               <img
-                className="absolute h-[45px] md:h-[55px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-80"
+                className="absolute h-[45px] md:h-[55px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-80 z-50"
                 src="./ps5.png"
                 alt=""
               />
