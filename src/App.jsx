@@ -102,12 +102,6 @@ function App() {
       const xMove = (e.clientX / window.innerWidth - 0.5) * 30;
       const yMove = (e.clientY / window.innerHeight - 0.5) * 20;
       
-      gsap.to(".main .text", {
-        x: `${xMove * 0.15}%`,
-        y: `${yMove * 0.1}%`,
-        duration: 1.2,
-        ease: "Power2.easeOut"
-      });
       gsap.to(".sky", {
         x: xMove * 0.8,
         y: yMove * 0.3,
