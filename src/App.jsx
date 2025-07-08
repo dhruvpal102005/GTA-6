@@ -188,13 +188,13 @@ function App() {
                 alt=""
               />
               <div className="text text-white flex flex-col gap-2 absolute top-4 md:top-6 left-1/2 -translate-x-1/2 text-center z-10">
-                <h1 className="text-[5rem] md:text-[7rem] lg:text-[9rem] leading-none text-shadow text-white font-black tracking-tighter text-outline">
+                <h1 className="text-[5rem] md:text-[7rem] lg:text-[9rem] leading-none text-shadow text-white font-black tracking-tighter text-outline text-left">
                   grand
                 </h1>
-                <h1 className="text-[5rem] md:text-[7rem] lg:text-[9rem] leading-none text-shadow text-white font-black tracking-tighter text-outline ml-8 md:ml-12 lg:ml-16">
+                <h1 className="text-[5rem] md:text-[7rem] lg:text-[9rem] leading-none text-shadow text-white font-black tracking-tighter text-outline text-left ml-16 md:ml-24 lg:ml-32">
                   theft
                 </h1>
-                <h1 className="text-[5rem] md:text-[7rem] lg:text-[9rem] leading-none text-shadow text-white font-black tracking-tighter text-outline">
+                <h1 className="text-[5rem] md:text-[7rem] lg:text-[9rem] leading-none text-shadow text-white font-black tracking-tighter text-outline text-left">
                   auto
                 </h1>
               </div>
