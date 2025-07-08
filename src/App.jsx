@@ -120,12 +120,6 @@ function App() {
         duration: 0.7,
         ease: "Power2.easeOut"
       });
-      gsap.to(".text", {
-        x: xMove * 0.3,
-        y: yMove * 0.2,
-        duration: 1,
-        ease: "Power2.easeOut"
-      });
     });
   }, [showContent]);
 
