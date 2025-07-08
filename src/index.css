@@ -5,9 +5,34 @@
   src: url("./pricedown.otf");
 }
 
+@font-face {
+  font-family: "Helvetica Now Display";
+  src: local("Helvetica Neue"), local("Arial"), sans-serif;
+}
+
 html,
 body {
   width: 100%;
   height: 100%;
   font-family: "pricedown";
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.custom-cursor {
+  cursor: none;
+}
+
+.text-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.gradient-text {
+  background: linear-gradient(45deg, #ffd700, #ffed4e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }

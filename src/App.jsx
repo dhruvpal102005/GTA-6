@@ -5,6 +5,7 @@ import "remixicon/fonts/remixicon.css";
 
 function App() {
   let [showContent, setShowContent] = useState(false);
+  
   useGSAP(() => {
     const tl = gsap.timeline();
 
@@ -33,37 +34,44 @@ function App() {
   useGSAP(() => {
     if (!showContent) return;
 
+    // Initial setup for elements
+    gsap.set(".main", { scale: 1.7, rotate: -10 });
+    gsap.set(".sky", { scale: 1.5, rotate: -20 });
+    gsap.set(".bg", { scale: 1.8, rotate: -3 });
+    gsap.set(".character", { scale: 3, rotate: -20, bottom: "-150%", left: "50%", x: "-50%" });
+    gsap.set(".text", { scale: 1.4, rotate: -10 });
+
     gsap.to(".main", {
       scale: 1,
       rotate: 0,
       duration: 2,
-      delay: "-1",
+      delay: 0,
       ease: "Expo.easeInOut",
     });
 
     gsap.to(".sky", {
-      scale: 1.1,
+      scale: 1.2,
       rotate: 0,
       duration: 2,
-      delay: "-.8",
+      delay: 0.2,
       ease: "Expo.easeInOut",
     });
 
     gsap.to(".bg", {
-      scale: 1.1,
+      scale: 1.3,
       rotate: 0,
       duration: 2,
-      delay: "-.8",
+      delay: 0.2,
       ease: "Expo.easeInOut",
     });
 
     gsap.to(".character", {
-      scale: 1.4,
+      scale: 1.8,
       x: "-50%",
-      bottom: "-25%",
+      bottom: "-20%",
       rotate: 0,
       duration: 2,
-      delay: "-.8",
+      delay: 0.4,
       ease: "Expo.easeInOut",
     });
 
@@ -71,22 +79,51 @@ function App() {
       scale: 1,
       rotate: 0,
       duration: 2,
-      delay: "-.8",
+      delay: 0.3,
       ease: "Expo.easeInOut",
     });
+
+    // Stagger animation for text lines
+    gsap.fromTo(".text h1", 
+      { y: 100, opacity: 0 },
+      { 
+        y: 0, 
+        opacity: 1, 
+        duration: 1.5, 
+        delay: 0.8,
+        stagger: 0.2,
+        ease: "Power3.easeOut"
+      }
+    );
 
     const main = document.querySelector(".main");
 
     main?.addEventListener("mousemove", function (e) {
-      const xMove = (e.clientX / window.innerWidth - 0.5) * 40;
+      const xMove = (e.clientX / window.innerWidth - 0.5) * 30;
+      const yMove = (e.clientY / window.innerHeight - 0.5) * 20;
+      
       gsap.to(".main .text", {
-        x: `${xMove * 0.4}%`,
+        x: `${xMove * 0.3}%`,
+        y: `${yMove * 0.2}%`,
+        duration: 0.8,
+        ease: "Power2.easeOut"
       });
       gsap.to(".sky", {
-        x: xMove,
+        x: xMove * 0.8,
+        y: yMove * 0.3,
+        duration: 1,
+        ease: "Power2.easeOut"
       });
       gsap.to(".bg", {
-        x: xMove * 1.7,
+        x: xMove * 1.5,
+        y: yMove * 0.5,
+        duration: 0.6,
+        ease: "Power2.easeOut"
+      });
+      gsap.to(".character", {
+        x: `${-50 + xMove * 0.2}%`,
+        duration: 1.2,
+        ease: "Power2.easeOut"
       });
     });
   }, [showContent]);
@@ -102,11 +139,12 @@ function App() {
                 <text
                   x="50%"
                   y="50%"
-                  fontSize="250"
+                  fontSize="280"
                   textAnchor="middle"
                   fill="white"
                   dominantBaseline="middle"
-                  fontFamily="Arial Black"
+                  fontFamily="pricedown"
+                  fontWeight="900"
                 >
                   VI
                 </text>
@@ -123,16 +161,16 @@ function App() {
         </svg>
       </div>
       {showContent && (
-        <div className="main w-full rotate-[-10deg] scale-[1.7]">
+        <div className="main w-full">
           <div className="landing overflow-hidden relative w-full h-screen bg-black">
-            <div className="navbar absolute top-0 left-0 z-[10] w-full py-10 px-10">
-              <div className="logo flex gap-7">
-                <div className="lines flex flex-col gap-[5px]">
-                  <div className="line w-15 h-2 bg-white"></div>
-                  <div className="line w-8 h-2 bg-white"></div>
-                  <div className="line w-5 h-2 bg-white"></div>
+            <div className="navbar absolute top-0 left-0 z-[10] w-full py-8 px-8 md:py-12 md:px-12">
+              <div className="logo flex items-center gap-6">
+                <div className="lines flex flex-col gap-[6px]">
+                  <div className="line w-12 h-[3px] bg-white rounded-full"></div>
+                  <div className="line w-8 h-[3px] bg-white rounded-full"></div>
+                  <div className="line w-6 h-[3px] bg-white rounded-full"></div>
                 </div>
-                <h3 className="text-4xl -mt-[8px] leading-none text-white">
+                <h3 className="text-3xl md:text-4xl -mt-1 leading-none text-white font-bold tracking-wider">
                   Rockstar
                 </h3>
               </div>
@@ -140,75 +178,122 @@ function App() {
 
             <div className="imagesdiv relative overflow-hidden w-full h-screen">
               <img
-                className="absolute sky scale-[1.5] rotate-[-20deg] top-0 left-0 w-full h-full object-cover"
+                className="absolute sky top-0 left-0 w-full h-full object-cover"
                 src="./sky.png"
                 alt=""
               />
               <img
-                className="absolute scale-[1.8] rotate-[-3deg] bg top-0 left-0 w-full h-full object-cover"
+                className="absolute bg top-0 left-0 w-full h-full object-cover"
                 src="./bg.png"
                 alt=""
               />
-              <div className="text text-white flex flex-col gap-3 absolute top-20 left-1/2 -translate-x-1/2 scale-[1.4] rotate-[-10deg]">
-                <h1 className="text-[12rem] leading-none -ml-40">grand</h1>
-                <h1 className="text-[12rem] leading-none ml-20">theft</h1>
-                <h1 className="text-[12rem] leading-none -ml-40">auto</h1>
+              <div className="text text-white flex flex-col gap-2 absolute top-16 md:top-20 left-1/2 -translate-x-1/2 text-center">
+                <h1 className="text-[8rem] md:text-[12rem] lg:text-[14rem] leading-none text-shadow gradient-text font-black tracking-tighter">
+                  grand
+                </h1>
+                <h1 className="text-[8rem] md:text-[12rem] lg:text-[14rem] leading-none text-shadow gradient-text font-black tracking-tighter">
+                  theft
+                </h1>
+                <h1 className="text-[8rem] md:text-[12rem] lg:text-[14rem] leading-none text-shadow gradient-text font-black tracking-tighter">
+                  auto
+                </h1>
               </div>
               <img
-                className="absolute character -bottom-[150%] left-1/2 -translate-x-1/2  scale-[3] rotate-[-20deg]"
+                className="absolute character left-1/2 -translate-x-1/2"
                 src="./girlbg.png"
                 alt=""
               />
             </div>
-            <div className="btmbar text-white absolute bottom-0 left-0 w-full py-15 px-10 bg-gradient-to-t from-black to-transparent">
-              <div className="flex gap-4 items-center">
-                <i className="text-4xl ri-arrow-down-line"></i>
-                <h3 className="text-xl font-[Helvetica_Now_Display]">
+            <div className="btmbar text-white absolute bottom-0 left-0 w-full py-8 px-8 md:py-12 md:px-12 bg-gradient-to-t from-black via-black/80 to-transparent">
+              <div className="flex gap-4 items-center animate-bounce">
+                <i className="text-3xl md:text-4xl ri-arrow-down-line"></i>
+                <h3 className="text-lg md:text-xl font-light tracking-wide" style={{ fontFamily: 'Helvetica Now Display, sans-serif' }}>
                   Scroll Down
                 </h3>
               </div>
               <img
-                className="absolute h-[55px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                className="absolute h-[45px] md:h-[55px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-80"
                 src="./ps5.png"
                 alt=""
               />
             </div>
           </div>
-          <div className="w-full h-screen flex items-center justify-center bg-black">
-            <div className="cntnr flex text-white w-full h-[80%] ">
-              <div className="limg relative w-1/2 h-full">
+          
+          <div className="w-full min-h-screen flex items-center justify-center bg-black py-16 px-8">
+            <div className="cntnr flex flex-col lg:flex-row text-white w-full max-w-7xl gap-12 lg:gap-16">
+              <div className="limg relative w-full lg:w-1/2 h-[400px] lg:h-[600px] flex items-center justify-center">
                 <img
-                  className="absolute scale-[1.3] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                  className="w-full h-full object-contain max-w-[500px] drop-shadow-2xl"
                   src="./imag.png"
                   alt=""
                 />
               </div>
-              <div className="rg w-[30%] py-30">
-                <h1 className="text-8xl">Still Running,</h1>
-                <h1 className="text-8xl">Not Hunting</h1>
-                <p className="mt-10 text-xl font-[Helvetica_Now_Display]">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Distinctio possimus, asperiores nam, omnis inventore nesciunt
-                  a architecto eveniet saepe, ducimus necessitatibus at
-                  voluptate.
-                </p>
-                <p className="mt-3 text-xl font-[Helvetica_Now_Display]">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                  eius illum fugit eligendi nesciunt quia similique velit
-                  excepturi soluta tenetur illo repellat consectetur laborum
-                  eveniet eaque, dicta, hic quisquam? Ex cupiditate ipsa nostrum
-                  autem sapiente.
-                </p>
-                <p className="mt-10 text-xl font-[Helvetica_Now_Display]">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                  eius illum fugit eligendi nesciunt quia similique velit
-                  excepturi soluta tenetur illo repellat consectetur laborum
-                  eveniet eaque, dicta, hic quisquam? Ex cupiditate ipsa nostrum
-                  autem sapiente.
-                </p>
-                <button className="bg-yellow-500 px-10 py-10 text-black mt-10 text-4xl">
-                  Download Now
+              <div className="rg w-full lg:w-1/2 flex flex-col justify-center space-y-8">
+                <div className="space-y-4">
+                  <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight gradient-text font-black">
+                    Still Running,
+                  </h1>
+                  <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight gradient-text font-black">
+                    Not Hunting
+                  </h1>
+                </div>
+                
+                <div className="space-y-6 text-gray-300">
+                  <p className="text-lg md:text-xl leading-relaxed" style={{ fontFamily: 'Helvetica Now Display, sans-serif' }}>
+                    Experience the ultimate open-world adventure in Vice City. Navigate through neon-lit streets, 
+                    build your criminal empire, and live the life of luxury and danger in this reimagined classic.
+                  </p>
+                  <p className="text-lg md:text-xl leading-relaxed" style={{ fontFamily: 'Helvetica Now Display, sans-serif' }}>
+                    With enhanced graphics, immersive gameplay, and endless possibilities, Grand Theft Auto VI 
+                    pushes the boundaries of what's possible in gaming. Every choice matters, every action has consequences.
+                  </p>
+                  <p className="text-base md:text-lg leading-relaxed text-gray-400" style={{ fontFamily: 'Helvetica Now Display, sans-serif' }}>
+                    Available exclusively on PlayStation 5. Pre-order now and get exclusive in-game content, 
+                    including bonus vehicles, weapons, and access to premium locations.
+                  </p>
+                </div>
+                
+                <button className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 px-8 py-4 md:px-12 md:py-6 text-black text-2xl md:text-3xl font-bold rounded-lg shadow-2xl transform hover:scale-105 transition-all duration-300 w-fit">
+                  <span className="flex items-center gap-3">
+                    Download Now
+                    <i className="ri-download-line"></i>
+                  </span>
                 </button>
+              </div>
+            </div>
+          </div>
+          
+          {/* Additional footer section */}
+          <div className="w-full bg-gradient-to-t from-gray-900 to-black py-16 px-8">
+            <div className="max-w-7xl mx-auto text-center text-white">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div className="space-y-4">
+                  <i className="ri-gamepad-line text-4xl text-yellow-500"></i>
+                  <h3 className="text-xl font-bold">Next-Gen Gaming</h3>
+                  <p className="text-gray-400" style={{ fontFamily: 'Helvetica Now Display, sans-serif' }}>
+                    Experience unprecedented realism with ray tracing and 4K graphics
+                  </p>
+                </div>
+                <div className="space-y-4">
+                  <i className="ri-global-line text-4xl text-yellow-500"></i>
+                  <h3 className="text-xl font-bold">Massive World</h3>
+                  <p className="text-gray-400" style={{ fontFamily: 'Helvetica Now Display, sans-serif' }}>
+                    Explore the largest and most detailed open world ever created
+                  </p>
+                </div>
+                <div className="space-y-4">
+                  <i className="ri-group-line text-4xl text-yellow-500"></i>
+                  <h3 className="text-xl font-bold">Online Multiplayer</h3>
+                  <p className="text-gray-400" style={{ fontFamily: 'Helvetica Now Display, sans-serif' }}>
+                    Join millions of players in the ultimate online experience
+                  </p>
+                </div>
+              </div>
+              
+              <div className="border-t border-gray-800 pt-8">
+                <p className="text-gray-500 text-sm" style={{ fontFamily: 'Helvetica Now Display, sans-serif' }}>
+                  © 2024 Rockstar Games. All rights reserved. Grand Theft Auto and related marks are trademarks of Take-Two Interactive Software, Inc.
+                </p>
               </div>
             </div>
           </div>
